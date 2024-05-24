@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Time Since We Met</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+        }
+        #time-since {
+            font-size: 24px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div id="time-since">It has been _ days, _ hours, _ minutes, and _ seconds since we've kissed 💔</div>
+    
+    <script>
+        function updateTimeSince() {
+            const startDate = new Date('2024-05-09T09:00:00-07:00'); // May 9, 2024 at 9:00 AM PST
+            const now = new Date();
+            const timeDiff = now - startDate;
+            
+            const seconds = Math.floor((timeDiff / 1000) % 60);
+            const minutes = Math.floor((timeDiff / 1000 / 60) % 60);
+            const hours = Math.floor((timeDiff / (1000 * 60 * 60)) % 24);
+            const days = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
+            
+            document.getElementById('time-since').innerHTML = `It has been ${days} days, ${hours} hours, ${minutes} minutes, and ${seconds} seconds since we've kissed 💔`;
+        }
+
+        // Update the time every second
+        setInterval(updateTimeSince, 1000);
+    </script>
+</body>
+</html>
